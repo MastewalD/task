@@ -1,0 +1,50 @@
+span{
+    display: none;
+    color: red;
+  }
+  input:invalid[focused="true"] ~span{
+  
+  display: block;
+  
+  }
+  .allRegister{
+    
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .registerForm{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    height: 300px;
+    background-color: aqua;
+    align-items: center;
+    justify-content: center;
+  }
+  .allLogin{
+    
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .loginForm{
+    display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+row-gap: 20px;
+    background-color: blueviolet;
+
+    height:200px;
+
+    width: 300px;
+
+  }
+
+  
