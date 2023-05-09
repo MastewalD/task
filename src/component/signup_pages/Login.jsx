@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import InputForm from './Input';
+import axios from "axios"
 import "./style.css"
 const Login = () => {
   const [values, setValue] = useState({
@@ -9,7 +10,13 @@ const Login = () => {
   });
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(values);
+    axios.post("/login",{
+      values
+    }).then((res)=>{
+      console.log(res)
+    }).catch((err)=>{
+      console.log(err)
+    })
   };
   const onChange = (e) => {
     setValue({ ...values, [e.target.name]: e.target.value });

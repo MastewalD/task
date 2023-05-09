@@ -1,17 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
+import {useNavigate} from "react-router-dom"
 import Axios from "axios"
 import {Link} from "react-router-dom"
 import InputForm from './Input';
 const Register = () => {
+  const navigate=useNavigate()
   const [values, setValue] = useState({
     userName: '',
     email: '',
     password: '',
     confirmPassword: '',
   });
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(values);
+  console.log(values)
+    Axios.post("https://7jpb97-8000.csb.app/register", {
+  values
+    }).then((res)=>{
+      if(res.data="exist"){
+          navigate("/")
+      }
+  
+       
+    }).catch((err)=>{
+      console.log(err)
+    })
+navigate("/", { replace: true })
   };
   const onChange = (e) => {
     setValue({ ...values, [e.target.name]: e.target.value });
@@ -57,6 +72,8 @@ const Register = () => {
       errorMessage: 'password should match',
     },
   ];
+  
+  
   return (
     <div className='allRegister'>
       <form className='registerForm' onSubmit={handleSubmit}>
