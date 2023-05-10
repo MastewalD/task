@@ -1,7 +1,14 @@
 .App {
   text-align: center;
 }
-
+.LINK{
+  background-color:#0F51E8;
+  display:flex;
+  color:white;
+  justify-content:flex-end;
+  align-item:center;
+  column-gap:20px;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

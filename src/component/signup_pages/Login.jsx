@@ -68,7 +68,7 @@ const Login = () => {
           />
         ))}
 
-        <button>submit</button>
+        <button>log in </button>
       </form>
     </div>
   );
