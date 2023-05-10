@@ -12,21 +12,27 @@ const Register = () => {
     confirmPassword: '',
   });
   
-  const handleSubmit = (e) => {
+async function handleSubmit(e) {
     e.preventDefault();
   console.log(values)
-    Axios.post("https://7jpb97-8000.csb.app/register", {
+  try{
+    
+      Axios.post("https://7jpb97-8000.csb.app/register", {
   values
-    }).then((res)=>{
-      if(res.data="exist"){
-          navigate("/")
-      }
+  }).then((res)=>{
+    if(res.data="exist"){
+       alert("user exist")
+       navigate("/")
+    }
+    else{
+      alert("user sign up successfuly")
+    }
+  })
   
-       
-    }).catch((err)=>{
-      console.log(err)
-    })
-navigate("/", { replace: true })
+  }
+  catch(err){
+      console.log(err)}
+      
   };
   const onChange = (e) => {
     setValue({ ...values, [e.target.name]: e.target.value });

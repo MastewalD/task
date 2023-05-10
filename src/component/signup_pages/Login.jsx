@@ -1,22 +1,34 @@
 import React, { useState } from 'react';
 import InputForm from './Input';
+import {useNavigate} from "react-router-dom"
 import axios from "axios"
 import "./style.css"
 const Login = () => {
+  const navigate=useNavigate()
   const [values, setValue] = useState({
     userName: '',
     password: '',
     
   });
-  const handleSubmit = (e) => {
+ async function handleSubmit(e) {
     e.preventDefault();
-    axios.post("/login",{
-      values
-    }).then((res)=>{
-      console.log(res)
-    }).catch((err)=>{
-      console.log(err)
-    })
+  console.log(values)
+  try{
+    
+      axios.post("https://7jpb97-8000.csb.app/login", {
+  values
+  }).then((res)=>{
+    if(res.data=="exist"){
+      navigate("/home")
+    }
+    else{
+      alert("user haven't sign up")
+    }
+  })
+  }
+  catch(err){
+      console.log(err)}
+      
   };
   const onChange = (e) => {
     setValue({ ...values, [e.target.name]: e.target.value });

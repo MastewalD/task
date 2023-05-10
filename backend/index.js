@@ -15,32 +15,49 @@ app.use(express.json())
 app.use(cors())
 app.use(express.urlencoded({extended:true}))
 
-app.post('/register', (req, res) => {
-  const user = new User(
-    req.body.values
-  );
-  user
-    .save()
-    .then((result) => {
-      res.send(result);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
-app.post('/login', (req, res) => {
-  const login = new Login(
-    req.body.values
-  );
-login
-    .save()
-    .then((result) => {
-      res.send(result);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
+app.post('/register', async(req,res)=>{
+  const {userName,email,password}=req.body.values
+  const data={
+    userName:userName,
+    email:email,
+    password:password,
+  }
+  try{
+    const check=await collection.findOne({userName:userName})
+    if (check){
+      res.json("exist")
+    }
+    else{
+      res.json("not exist")
+      await collection.insertMany({data})
+    }
+  }
+  catch(e){
+    res.json("not exist")
+}}
+)
+app.get("/",cors(),(req,res)=>{
+  
+})
+app.post('/login', async(req,res)=>{
+  const {userName,password}=req.body.values
+  try{
+    const check=await collection.findOne({userName:userName,
+    password:password})
+    if (check){
+      res.json("exist")
+    }
+    else{
+      res.json("notexist")
+    }
+    
+    
+    
+  }
+  catch(e){
+    res.json("not exist")
+}}
+)
 
 app.post('/add_grade', (req, res) => {
   const grade = new Grade(
