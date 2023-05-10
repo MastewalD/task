@@ -46,7 +46,7 @@ async function handleSubmit(e) {
       type: 'text',
       required: true,
       pattern: '^[A-Za-z][A-Za-z0-9_]{3,15}$',
-      errorMessage: 'userName should be start with letter and have more than three character ',
+      errorMessage: 'userName should start with letter  ',
     },
     {
       id: 2,
@@ -55,7 +55,7 @@ async function handleSubmit(e) {
       placeholder: 'enter the email',
       type: 'email',
       required: true,
-      errorMessage: 'please enter the valid email',
+      
     },
     {
       id: 3,
@@ -65,7 +65,7 @@ async function handleSubmit(e) {
       type: 'text',
       required: true,
       pattern: '^[A-Za-z][A-Za-z0-9_]{3,15}$',
-      errorMessage: 'password should start with letter and be greater than 3 ',
+      errorMessage: 'password should start with letter ',
     },
     {
       id: 4,
